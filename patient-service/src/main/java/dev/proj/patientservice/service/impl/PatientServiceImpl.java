@@ -2,6 +2,7 @@ package dev.proj.patientservice.service.impl;
 
 import dev.proj.patientservice.dto.request.PatientRequestDTO;
 import dev.proj.patientservice.dto.response.PatientResponseDTO;
+import dev.proj.patientservice.exception.EmailAlreadyExistsException;
 import dev.proj.patientservice.mapper.PatientMapper;
 import dev.proj.patientservice.model.Patient;
 import dev.proj.patientservice.repository.PatientRepository;
@@ -28,13 +29,16 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
-        LocalDate now = LocalDate.now();
+        if (patientRepository.existsByEmail(patientRequestDTO.email())) {
+            throw new EmailAlreadyExistsException(patientRequestDTO.email() + "| This email already exists");
+        }
+
         Patient newPatient = Patient.builder()
                 .name(patientRequestDTO.name())
                 .address(patientRequestDTO.address())
                 .email(patientRequestDTO.email())
                 .birthDate(patientRequestDTO.birthDate())
-                .registeredDate(now)
+                .registeredDate(LocalDate.now())
                 .build();
         return null;
     }
