@@ -3,6 +3,7 @@ package dev.proj.patientservice.controller;
 import dev.proj.patientservice.dto.request.PatientRequestDTO;
 import dev.proj.patientservice.dto.response.PatientResponseDTO;
 import dev.proj.patientservice.service.PatientService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/patients")
+@Tag(name = "Patient", description = "API for managing Patients")
 public class PatientController {
     private final PatientService patientService;
 
