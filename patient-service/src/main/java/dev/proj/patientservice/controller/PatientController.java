@@ -2,14 +2,11 @@ package dev.proj.patientservice.controller;
 
 import dev.proj.patientservice.dto.request.PatientRequestDTO;
 import dev.proj.patientservice.dto.response.PatientResponseDTO;
-import dev.proj.patientservice.exception.BadRequestException;
 import dev.proj.patientservice.service.PatientService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
