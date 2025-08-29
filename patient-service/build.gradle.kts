@@ -33,6 +33,8 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	// https://mvnrepository.com/artifact/com.h2database/h2
+	implementation("com.h2database:h2:2.3.232")
 }
 
 tasks.withType<Test> {
