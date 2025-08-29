@@ -40,7 +40,8 @@ public class PatientServiceImpl implements PatientService {
                 .birthDate(patientRequestDTO.birthDate())
                 .registeredDate(LocalDate.now())
                 .build();
-        return null;
+
+        return patientMapper.toPatientResponseDTO(patientRepository.save(newPatient));
     }
 
 }
